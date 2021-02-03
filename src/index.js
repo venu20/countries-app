@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Countries from './components/countries-container/countries-container';
+import Countries from './components/countries/countries';
 
 const changeTheme = () => {
   const body = document.querySelector('body');

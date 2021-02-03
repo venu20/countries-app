@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { act } from 'react-dom/test-utils';
 import CountrieDetails from '../countrie-details/countrie-details';
-import Countrie from "../countries-presentation/countrie";
-import { addClass, removeClass } from '../../helper';
+import Countrie from "../countrie/countrie";
+import { addClass, removeClass } from '../../helpers/helper';
 import {END_POINTS, BASE_URL} from '../../constants/urlEndpoints';
 export default class Countries extends Component {
     constructor(props){

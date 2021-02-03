@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
-import { isElementVisible } from "../../helper";
+import { isElementVisible } from "../../helpers/helper";
 export default class Countrie extends Component {
     constructor(props){
         super(props);

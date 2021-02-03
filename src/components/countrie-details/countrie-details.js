@@ -4,9 +4,6 @@ export default class CountrieDetails extends Component {
     constructor(props){
         super(props);
     }
-    componentDidMount() {
-
-    }
 
     goBack(){
         this.props.showAll();
