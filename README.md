@@ -1,6 +1,6 @@
 # REST Countries API with color theme switcher
 
-![REST Countries API with color theme switcher coding challenge](./design/desktop-design-dark.jpg)
+![REST Countries API with color theme switcher coding challenge](./design/desktop-design-home-dark.jpg)
 
 ## Welcome! 👋
 
