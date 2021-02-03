@@ -1,5 +1,0 @@
-1) Make it responsive
-2) Show dropdown properly and click outside hide drodown content
-3) Handle error scenarios(API error scenarios)(show notification and empty list)
-4) Unselect the dropdownItem and show all the cards
-5) make it accessible
