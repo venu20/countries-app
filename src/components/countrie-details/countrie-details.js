@@ -60,7 +60,7 @@ export default class CountrieDetails extends Component {
                             <h5><strong>Border Countries:</strong></h5>
                             {
                                 borders.map((border) => {
-                                    return <span onClick={this.showDetails.bind(this)}>{border}</span>
+                                    return <a href="javascript:void(0)" className="border" onClick={this.showDetails.bind(this)}>{border}</a>
                                 })
                             }
                         </div>

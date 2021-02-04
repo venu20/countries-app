@@ -17,10 +17,13 @@ export default class Countries extends Component {
         };
     }
 
+    /**
+     * Function to close drodown items on document(outside click)
+     */
     closeDropdown(){
         document.addEventListener('click', () => {
             const dropdownContent = document.querySelector('.dropdown-content');
-            if(dropdownContent  ){
+            if(dropdownContent){
                 dropdownContent.style.display = 'none'        
             }
         });
@@ -44,6 +47,10 @@ export default class Countries extends Component {
         this.closeDropdown();
     }
 
+    /**
+     * Function to show cards on initial load and search
+     * @param {*} url 
+     */
     updateData(url = `${BASE_URL}/all`){
     return fetch(url)
         .then((res) => {
@@ -60,6 +67,10 @@ export default class Countries extends Component {
         })
     }
 
+    /**
+     * Function to show search results based on user input
+     * @param {*} event 
+     */
     handleChange(event){
         event.preventDefault();
         const searchValue = event.target.value;
@@ -75,6 +86,10 @@ export default class Countries extends Component {
         this.updateData(url);
     }
 
+    /**
+     * Toggle dropdown , open and close dropdown items
+     * @param {*} event 
+     */
     toggleDropdown(event){
         const dropdownContent = document.querySelector('.dropdown-content');
         const isVisible = window.getComputedStyle(dropdownContent).display;
@@ -82,6 +97,10 @@ export default class Countries extends Component {
         event.stopPropagation();
     }
 
+    /**
+     * Function to filter based on country region
+     * @param {*} event 
+     */
     filter(event){
         const activeEle = document.querySelector('.dropdown-item.active')
         if(event.target.classList.contains('active')){
