@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { act } from 'react-dom/test-utils';
 import CountrieDetails from '../countrie-details/countrie-details';
 import Countrie from "../countrie/countrie";
 import { addClass, removeClass } from '../../helpers/helper';
@@ -29,7 +28,19 @@ export default class Countries extends Component {
         });
     }
 
+    stopAnchorHref(){
+        document.querySelectorAll("a[href^='#']").forEach(node => {
+            node.addEventListener('click', e => {
+              e.preventDefault();
+              console.log(e.target.href);
+              //this.props.history.push(e.target.href);
+            });
+          });
+    }
+
     componentDidMount() {
+        this.stopAnchorHref();
+
         this.updateData()
         .then((res) => {
             // filter all regions
@@ -118,7 +129,10 @@ export default class Countries extends Component {
         this.updateData(url);
     }
 
-    showDetailsComponent(countrie) {
+    showDetailsComponent(event, countrie) {
+        if(event){
+            event.stopPropagation();
+        }
         this.setState({showDetails: true, countrieDetail: countrie})
     }
 
@@ -151,32 +165,32 @@ export default class Countries extends Component {
             )
         }
         return (
-            <div class="main-content">
-                        <nav class="navigation">
-                        <div class="search-box">
-                            <i class="icon icon-search">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="svg-icon">
+            <div className="main-content">
+                        <nav className="navigation">
+                        <div className="search-box">
+                            <i className="icon icon-search">
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" className="svg-icon">
                                 <g id="Search_-_32" data-name="Search - 32">
                                     <path d="M0,12a12,12,0,0,0,18.94,9.77l9.65,9.64a2,2,0,0,0,2.82-2.82l-9.64-9.65A12,12,0,1,0,0,12Zm2,0A10,10,0,1,1,12,22,10,10,0,0,1,2,12Z"></path></g></svg>
                             </i>
-                            <input id="search-box" value={search} type="text" class="search" onChange={this.handleChange.bind(this)} placeholder="Search for a country" />
+                            <input id="search-box" value={search} type="text" className="search" onChange={this.handleChange.bind(this)} placeholder="Search for a country" />
                         </div>
                         
-                        <div class="filter" onClick={this.toggleDropdown.bind(this)}>
-                            <button class="btn btn-secondary">
+                        <div className="filter" onClick={this.toggleDropdown.bind(this)}>
+                            <button className="btn btn-secondary">
                             <span>
                                 Filter by Region
                             </span>
-                            <i class="icon icon-arrow-down">
-                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="svg-icon carot-down">
+                            <i className="icon icon-arrow-down">
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" className="svg-icon carot-down">
                                 <g id="Caret_Up_-_32" data-name="Caret Up - 32"><path d="M29,23a1,1,0,0,1-.71-.29L16,10.41,3.71,22.71a1,1,0,0,1-1.42-1.42l13-13a1,1,0,0,1,1.42,0l13,13a1,1,0,0,1,0,1.42A1,1,0,0,1,29,23Z"></path></g></svg>
 
                             </i>
                             </button>
-                            <div class="dropdown dropdown-content">
+                            <div className="dropdown dropdown-content">
                                 {
                                     regions.map((region) => {
-                                        return (<div class="dropdown-item" onClick={this.filter.bind(this)}>
+                                        return (<div className="dropdown-item" onClick={this.filter.bind(this)}>
                                             {region}
                                         </div>)
                                     })
@@ -184,7 +198,7 @@ export default class Countries extends Component {
                             </div>
                         </div>
                         </nav>
-                        <main class="countries" tabindex="0">
+                        <main className="countries" tabIndex="0">
                             {
                             countries.map((countrie) => {
                                 return <Countrie key={countrie.name} details={countrie} showCountrieDetails={this.showDetailsComponent.bind(this)}></Countrie>;

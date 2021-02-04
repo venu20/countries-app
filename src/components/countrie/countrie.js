@@ -1,10 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types';
 import { isElementVisible } from "../../helpers/helper";
 export default class Countrie extends Component {
-    constructor(props){
-        super(props);
-    }
     componentDidMount() {
         const { alpha3Code } = this.props.details;
         const ele = document.querySelector(`#${alpha3Code}`);
@@ -15,19 +11,21 @@ export default class Countrie extends Component {
         }
     }
 
-    showDetails(){
-        this.props.showCountrieDetails(this.props.details);
+    showDetails(event){
+        this.props.showCountrieDetails(event, this.props.details);
+        return false;
     }
 
     
     render() {
         const {name, population, flag, alpha3Code, region, capital} = this.props.details;
         return (
-            <a class="card" href="javascript:void(0)" id={alpha3Code} onClick={this.showDetails.bind(this)}>
-                <div class="card-image">
+             // eslint-disable-next-line
+            <a className="card" href="#" id={alpha3Code} onClick={this.showDetails.bind(this)}>
+                <div className="card-image">
                     <img data-src={flag} loading="lazy" alt={`${name} flag`}  />
                 </div>
-                <div class="card-content">
+                <div className="card-content">
                     <h3>{name}</h3>
                     <div className="sub-details">
                     <p> <strong>Population:</strong> {population}</p>

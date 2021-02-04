@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 
 export default class CountrieDetails extends Component {
-    constructor(props){
-        super(props);
-    }
 
     goBack(){
         this.props.showAll();
     }
 
     showDetails(event){
-        console.log(event.target.textContent, 'border code');
         this.props.showBorders(event.target.textContent);
     }
     
@@ -27,18 +23,17 @@ export default class CountrieDetails extends Component {
             topLevelDomain,
             nativeName,
             currencies } = this.props.countrie;
-            const content  = [region, subregion, capital, languages, currencies]
         return (
             <div className="countrie-details">
                 <button className="btn btn-secondary" onClick={this.goBack.bind(this)}>
                     <i className="icon">
-                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" class="svg-icon"><g id="Arrow_Left_-_32" data-name="Arrow Left - 32"><path d="M32,16a1,1,0,0,1-1,1H3.41l10.3,10.29a1,1,0,0,1,0,1.42,1,1,0,0,1-1.42,0l-12-12a1,1,0,0,1,0-1.42l12-12a1,1,0,1,1,1.42,1.42L3.41,15H31A1,1,0,0,1,32,16Z"></path></g></svg>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" className="svg-icon"><g id="Arrow_Left_-_32" data-name="Arrow Left - 32"><path d="M32,16a1,1,0,0,1-1,1H3.41l10.3,10.29a1,1,0,0,1,0,1.42,1,1,0,0,1-1.42,0l-12-12a1,1,0,0,1,0-1.42l12-12a1,1,0,1,1,1.42,1.42L3.41,15H31A1,1,0,0,1,32,16Z"></path></g></svg>
                     </i>
                     Back
                     </button>
                 <div className="about">
                     <figuare>
-                        <img src={flag} />
+                        <img src={flag} alt={`${name} flag`} />
                     </figuare>
                     <section className="details">
                         <h2 className="header">{name}</h2>
@@ -60,7 +55,7 @@ export default class CountrieDetails extends Component {
                             <h5><strong>Border Countries:</strong></h5>
                             {
                                 borders.map((border) => {
-                                    return <a href="javascript:void(0)" className="border" onClick={this.showDetails.bind(this)}>{border}</a>
+                                    return <button className="border" onClick={this.showDetails.bind(this)}>{border}</button>
                                 })
                             }
                         </div>
